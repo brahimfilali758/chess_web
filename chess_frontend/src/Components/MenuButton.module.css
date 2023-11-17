@@ -1,0 +1,12 @@
+.toolbarChild {
+}
+
+.toolbarButton {
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Newsreader;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 32px */
+  letter-spacing: -0.32px;
+}

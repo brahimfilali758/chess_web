@@ -1,0 +1,29 @@
+.appBar {
+  height: 90px;
+  display: flex;
+  justify-content: center;
+}
+.toolbar {
+  margin-left: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.toolbarChild {
+}
+
+.toolbarButton {
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Newsreader;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 32px */
+  letter-spacing: -0.32px;
+}
+
+.menuItemsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
