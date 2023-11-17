@@ -1,7 +1,7 @@
 export const mode = "dark";
 export const defaultWhite = "#353F49";
-export const background = "#A9B2B8";
-export const primaryColor = "#7B1FA2";
+export const background = "#B58863";
+export const primaryColor = "#592216";
 export const secondaryColor = "#c63fff";
 export const statusError = "#D73F39";
 export const statusValidation = "#9FBC4D";

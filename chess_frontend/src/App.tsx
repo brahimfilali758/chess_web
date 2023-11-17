@@ -1,13 +1,13 @@
-import React, { useMemo, useState } from "react";
-import logo from "./logo.svg";
+import { useMemo, useState } from "react";
 import styles from "./App.module.css";
-import Button from "@mui/material/Button";
 import ApplicationToolbar from "./Components/ApplicationToolBar";
 import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
 import * as lightMode from "./themeLight";
 import * as darkMode from "./themeDark";
 import { Chessboard } from "react-chessboard";
+import { useAppSelector, useAppDispatch } from "./app/hooks";
+import { selectThemeMode, setThemeMode } from "./features/public";
 
 function App() {
   const [themeMode, setThemeMode] = useState<"light" | "dark">("light");
@@ -47,7 +47,6 @@ function App() {
       "--greyBackground",
       variantTheme.greyBackground
     );
-    (global as any).ee42Callback = setThemeMode;
 
     return createTheme({
       typography: variantTheme.defaultFontFamily,
@@ -86,13 +85,20 @@ function App() {
             },
           },
         },
+        MuiAppBar: {
+          styleOverrides: {
+            root: {
+              backgroundColor: variantTheme.primaryColor,
+            },
+          },
+        },
       },
     });
   }, [themeMode]);
 
   return (
     <ThemeProvider theme={theme}>
-      <ApplicationToolbar></ApplicationToolbar>
+      <ApplicationToolbar setTheme={setThemeMode} />
       <div className={styles.MainContainer}>
         <div className={styles.board}>
           <Chessboard id="BasicBoard" />
