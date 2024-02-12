@@ -1,19 +1,19 @@
 package server
 
 import (
-	"fmt"
-	"net/http"
+	"log"
+
+	_ "github.com/lib/pq"
 )
 
-
 func StartServer() {
-	http.HandleFunc("/", getRoot)
-	http.HandleFunc("/hello", getHello)
-	fmt.Printf("Listening ..")
-	err := http.ListenAndServe(":3333", nil)
-	if (err != nil ){
-		fmt.Printf("Error")
+	store, err := NewPSQLDB()
+	if err != nil {
+		log.Fatal(err)
 	}
+	if err := store.Init(); err != nil {
+		log.Fatal(err)
+	}
+	apiServer := NewAPIServer(":8080", store)
+	apiServer.Run()
 }
-
-
